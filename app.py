@@ -44,6 +44,16 @@ def add_exercise():
         return redirect('/')
     return render_template("add_exercise.html")
 
+@app.route('/delete/<int:id>', methods=['POST'])
+def delete_exercise(id):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM exercises WHERE id = ?", (id,))
+    conn.commit()
+    conn.close()
+    return redirect('/')
+
+
 @app.route('/calendar')
 def calendar():
     conn = sqlite3.connect(DB_NAME)
