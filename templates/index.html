@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/add" class="button">Add New Exercise</a>
+<a href="/calendar" class="button">View Calendar</a>
+<table>
+    <tr><th>Name</th><th>Reps</th><th>Sets</th><th>Date</th></tr>
+    {% for exercise in exercises %}
+        <tr>
+            <td>{{ exercise[1] }}</td>
+            <td>{{ exercise[2] }}</td>
+            <td>{{ exercise[3] }}</td>
+            <td>{{ exercise[4] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
