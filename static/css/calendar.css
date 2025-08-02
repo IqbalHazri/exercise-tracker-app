@@ -1,0 +1,85 @@
+/* Calendar Container Styling */
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Event styling */
+.fc-daygrid-event {
+    font-size: 0.85rem;
+    border-radius: 5px;
+    padding: 2px 4px;
+}
+
+/* Header Toolbar Styling */
+.fc-toolbar.fc-header-toolbar {
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Month/Year Title */
+.fc-toolbar-title {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Day Names (Sun, Mon...) */
+.fc-col-header-cell {
+    background-color: #f8f9fa !important;
+    color: #333 !important;
+    font-weight: 600;
+    border: 1px solid #dee2e6 !important;
+}
+
+/* Day cells */
+.fc-daygrid-day {
+    background-color: white;
+    border: 1px solid #dee2e6;
+}
+
+/* Today's highlight */
+.fc-day-today {
+    background-color: #fff3cd !important;
+}
+
+/* Remove any blue borders */
+.fc-theme-standard th,
+.fc-theme-standard td {
+    border-color: #dee2e6 !important;
+}
+
+/* Remove the gap between the day names and the first row of dates */
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid table {
+    border-collapse: collapse !important;
+}
+
+.fc .fc-scrollgrid td,
+.fc .fc-scrollgrid th {
+    border-spacing: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure header and dates connect without gap */
+.fc .fc-scrollgrid-section-header > td {
+    padding-bottom: 0 !important;
+}
+
+/* Hover effect for each day cell */
+.fc-daygrid-day:hover {
+    background-color: #f1f3f5; /* Light gray hover */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Hover effect for events */
+.fc-daygrid-event:hover {
+    background-color: #0056b3 !important; /* Darker blue */
+    color: white !important;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.03); /* Slight pop-out */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}

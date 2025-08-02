@@ -8,14 +8,16 @@ DB_NAME = "db/exercises.db"
 # Create DB if not exists
 def init_db():
     if not os.path.exists(DB_NAME):
+        os.makedirs(os.path.dirname(DB_NAME), exist_ok=True)
         conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
         cursor.execute('''CREATE TABLE exercises (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             name TEXT NOT NULL,
-                            reps INTEGER NOT NULL,
-                            sets INTEGER NOT NULL,
-                            date TEXT
+                            reps INTEGER,
+                            sets INTEGER,
+                            date TEXT,
+                            duration INTEGER
                         )''')
         conn.commit()
         conn.close()
@@ -33,12 +35,13 @@ def index():
 def add_exercise():
     if request.method == 'POST':
         name = request.form['name']
-        reps = request.form['reps']
-        sets = request.form['sets']
+        reps = request.form['reps'] or None
+        sets = request.form['sets'] or None
         date = request.form['date']
+        duration = request.form['duration'] or None
         conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO exercises (name, reps, sets, date) VALUES (?, ?, ?, ?)", (name, reps, sets, date))
+        cursor.execute("INSERT INTO exercises (name, reps, sets, date, duration) VALUES (?, ?, ?, ?, ?)", (name, reps, sets, date, duration))
         conn.commit()
         conn.close()
         return redirect('/')
