@@ -24,7 +24,7 @@ app.permanent_session_lifetime = timedelta(hours=int(os.getenv("SESSION_HOURS", 
 
 Session(app)
 
-CORS(app, supports_credentials=True, origins=[os.getenv("CORS_ORIGIN", "http://localhost:3000")])
+CORS(app, supports_credentials=True, origins=os.getenv("CORS_ORIGIN").split(","))
 
 
 # --- MySQL Connection ---
