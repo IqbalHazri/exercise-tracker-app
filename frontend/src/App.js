@@ -6,18 +6,19 @@ import Statistics from "./Statistics";
 // import CalendarPage from "./CalendarPage";
 import Login from "./Login";
 import './App.css';
+import { API_BASE_URL } from "./config";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/check-auth", { withCredentials: true })
+    axios.get(`${API_BASE_URL}/check-auth`, { withCredentials: true })
       .then(res => setAuthenticated(res.data.authenticated))
       .catch(() => setAuthenticated(false));
   }, []);
 
   const handleLogout = () => {
-    axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
+    axios.post(`${API_BASE_URL}/logout`, {}, { withCredentials: true })
       .then(() => setAuthenticated(false))
       .catch(err => console.error(err));
   };

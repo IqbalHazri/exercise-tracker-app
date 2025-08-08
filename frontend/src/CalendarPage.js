@@ -4,12 +4,13 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { API_BASE_URL } from "./config";
 
 function CalendarPage() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/exercises")
+    axios.get(`${API_BASE_URL}/exercises`)
       .then(res => {
         const formatted = res.data.map((exercise) => ({
           title: `${exercise[1]} (${exercise[4]} min)`, // name + duration
