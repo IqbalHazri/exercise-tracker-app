@@ -1,0 +1,23 @@
+/* Normal link color: Gold */
+.custom-link {
+  color: #FFFFFF !important; /* gold */
+  transition: color 0.3s ease;
+}
+
+/* Hover effect: Orange */
+.custom-link:hover {
+  color: #FFA500 !important; /* orange */
+}
+
+/* Active page link: Bright yellow and bold */
+.custom-link.active {
+  color: #FFFF66 !important; /* bright yellow */
+  font-weight: bold;
+}
+
+/* Bottom border under headings for separation */
+h3.text-primary {
+  border-bottom: 2px solid #0d6efd; /* Bootstrap primary blue */
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}

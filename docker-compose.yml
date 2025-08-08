@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8
+    container_name: exercise_db
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: exercise_db
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql # Persistent Mysql Data
+      - ./db:/docker-entrypoint-initdb.d # Optional init script
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: exercise_backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - ./flask_sessions:/app/flask_sessions
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: exercise_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
