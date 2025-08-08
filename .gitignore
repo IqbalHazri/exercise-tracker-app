@@ -35,9 +35,14 @@ backend/.venv/
 # Flask server-side sessions
 flask_sessions/
 
-# If you generate local uploads/temp
+# Local uploads/temp
 backend/uploads/
 backend/tmp/
+
+# Python egg / build artifacts
+backend/build/
+backend/dist/
+backend/*.egg-info/
 
 # ── Frontend (React) ─────────────────────────────────
 frontend/node_modules/
@@ -65,3 +70,8 @@ data/
 .vscode/
 .idea/
 *.iml
+
+# ── Coverage / Test Artifacts (frontend/backend) ─────
+coverage/
+coverage-*.json
+lcov-report/
