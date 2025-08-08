@@ -6,7 +6,7 @@ import Statistics from "./Statistics";
 // import CalendarPage from "./CalendarPage";
 import Login from "./Login";
 import './App.css';
-// import { API_BASE_URL } from "./config";
+import { API_BASE_URL } from "./config";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
