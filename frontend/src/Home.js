@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { API_BASE_URL } from "./config";
 
 function Home() {
   const [exercises, setExercises] = useState([]);
