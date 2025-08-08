@@ -4,7 +4,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { API_BASE_URL } from "./config";
+// import { API_BASE_URL } from "./config";
 
 function CalendarPage() {
   const [events, setEvents] = useState([]);
