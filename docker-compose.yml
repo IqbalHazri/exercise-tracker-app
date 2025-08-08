@@ -4,6 +4,7 @@ services:
   db:
     image: mysql:8
     container_name: exercise_db
+    restart: always
     env_file:
       - .env
     environment:
@@ -22,6 +23,7 @@ services:
   backend:
     build: ./backend
     container_name: exercise_backend
+    restart: always
     ports:
       - "5000:5000"
     depends_on:
@@ -37,8 +39,9 @@ services:
     build:
       context: ./frontend
       args:
-        REACT_APP_API_BASE_URL: http://backend:5000
+        REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL}
     container_name: exercise_frontend
+    restart: always
     ports:
       - "3000:80"
     depends_on:
