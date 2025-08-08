@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 
 function Login({ onLogin }) {
   const [code, setCode] = useState("");
@@ -8,7 +9,7 @@ function Login({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/login", { code }, { withCredentials: true });
+      const res = await axios.post(`${API_BASE_URL}/login`, { code }, { withCredentials: true });
       if (res.data.success) {
         onLogin(); // Call parent function to set logged-in state
       } else {

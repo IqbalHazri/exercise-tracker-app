@@ -17,7 +17,7 @@ function Home() {
   const entriesPerPage = 10; // Show 10 entries per page
 
   const fetchExercises = () => {
-    axios.get("http://localhost:5000/exercises", { withCredentials: true })
+    axios.get(`http://${API_BASE_URL}/exercises`, { withCredentials: true })
       .then(res => setExercises(res.data))
       .catch(err => console.error(err));
   };
@@ -32,7 +32,7 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/exercises", form, { withCredentials: true })
+    axios.post(`http://${API_BASE_URL}/exercises`, form, { withCredentials: true })
       .then(() => {
         setForm({ name: "", reps: "", sets: "", duration: "", date: "" });
         fetchExercises(); // Refresh table
@@ -42,7 +42,7 @@ function Home() {
 
   const handleDelete = (id) => {
   if (window.confirm("Are you sure you want to delete this exercise?")) {
-    axios.delete(`http://localhost:5000/exercises/${id}`, { withCredentials: true })
+    axios.delete(`http://${API_BASE_URL}/exercises/${id}`, { withCredentials: true })
       .then(() => fetchExercises()) // Refresh table
       .catch(err => console.error(err));
     }

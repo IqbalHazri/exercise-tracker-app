@@ -19,7 +19,7 @@ function Statistics() {
   const [stats, setStats] = useState({ daily: [], weekly: [], monthly: [] });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/statistics", { withCredentials: true })
+    axios.get(`http://${API_BASE_URL}/statistics`, { withCredentials: true })
       .then(res => setStats(res.data))
       .catch(err => console.error(err));
   }, []);
